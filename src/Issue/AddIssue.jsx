@@ -29,13 +29,13 @@ const AddIssue = ({addFromData}) => {
   
       function submitForm(e){
         e.preventDefault()
-        // const form = event.currentTarget;
-        // if (form.checkValidity() === false) {
-        //   event.preventDefault();
-        //   event.stopPropagation();
-        // }
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
     
-        // setValidated(true);
+        setValidated(true);
         addFromData(formData)
        
         // console.log(formData);
@@ -59,7 +59,7 @@ const AddIssue = ({addFromData}) => {
     return (
         <>
         <Form onSubmit={submitForm} noValidate validated={validated} >
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label>
                     <b>Title :</b>
                 </Form.Label>
@@ -81,11 +81,11 @@ const AddIssue = ({addFromData}) => {
                 />
             </FloatingLabel> */}
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label>
                     <b>Sub Title :</b>
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter Sub Title"
+                <Form.Control required type="text" placeholder="Enter Sub Title"
                 name="sub_title"
                 value={sub_title}
                 onChange={handleChange}
@@ -94,11 +94,11 @@ const AddIssue = ({addFromData}) => {
                
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" >
                 <Form.Label>
                     <b>Assigned To :</b>
                 </Form.Label>
-                <Form.Control type="text" placeholder="Enter Sub Title"
+                <Form.Control required type="text" placeholder="Enter Assigned To"
                 name="assigned_to"
                 value={assigned_to}
                 onChange={handleChange}
@@ -108,11 +108,11 @@ const AddIssue = ({addFromData}) => {
             </Form.Group>
             <Row>
                 <Col>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" >
                         <Form.Label>
                             <b>Start :</b>
                         </Form.Label>
-                        <Form.Control type="date" placeholder="Enter Sub Title"
+                        <Form.Control required type="date" 
                         name="start_date"
                         value={start_date}
                         onChange={handleChange}
@@ -122,11 +122,11 @@ const AddIssue = ({addFromData}) => {
                     </Form.Group>
                 </Col>
                 <Col>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" >
                         <Form.Label>
                             <b>End :</b>
                         </Form.Label>
-                        <Form.Control type="date" placeholder="Enter Sub Title"
+                        <Form.Control required type="date" 
                         name="end_date"
                         value={end_date}
                         onChange={handleChange}
